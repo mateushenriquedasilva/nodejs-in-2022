@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-in-2022",
+  "version": "1.0.0",
+  "description": "Node in 2022💚",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateushenriquedasilva/nodejs-in-2022.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Matheus H",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mateushenriquedasilva/nodejs-in-2022/issues"
+  },
+  "homepage": "https://github.com/mateushenriquedasilva/nodejs-in-2022#readme",
+  "dependencies": {
+    "express": "^4.18.0"
+  }
+}
