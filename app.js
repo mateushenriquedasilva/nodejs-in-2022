@@ -1,11 +1,20 @@
 const express = require("express");
+const fs = require("fs");
 // id random
 const { randomUUID } = require("crypto");
 const app = express();
 
 app.use(express.json());
 
-const products = [];
+let products = [];
+
+fs.readFile("products.json", "utf-8", (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    products = JSON.parse(data);
+  }
+});
 
 /*
   Body = Sempre que eu quiser enviar dados para minha aplicação
@@ -36,6 +45,13 @@ app.post("/products", (req, res) => {
     id: randomUUID(),
   };
   products.push(product);
+  fs.writeFile("products.json", JSON.stringify(products), (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Produto Inserido");
+    }
+  });
   return res.json(products);
 });
 
@@ -55,7 +71,7 @@ app.delete("/products/:id", (req, res) => {
   const { id } = req.params;
 
   const productIndex = products.findIndex((product) => product.id === id);
-  products.pop(productIndex);
+  products.splice(productIndex, 1);
   return res.json(products);
 });
 
